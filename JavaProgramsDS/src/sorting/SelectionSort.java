@@ -2,23 +2,22 @@ package sorting;
 
 import java.util.Scanner;
 
-public class BubbleSort {
+public class SelectionSort {
 
 	public static void sort(int[] a, int n) {
-		int x, j, temp, swaps;
+		int minIndex, temp, i, j;
 
-		for (x = n - 2; x >= 0; x--) {
-			swaps = 0;
-			for (j = 0; j <= x; j++) {
-				if (a[j] > a[j + 1]) {
-					temp = a[j];
-					a[j] = a[j + 1];
-					a[j + 1] = temp;
-					swaps++;
-				}
+		for (i = 0; i < n - 1; i++) {
+			minIndex = i;
+			for (j = i + 1; j < n; j++) {
+				if (a[j] < a[minIndex])
+					minIndex = j;
 			}
-			if (swaps == 0)
-				break;
+			if (i != minIndex) {
+				temp = a[i];
+				a[i] = a[minIndex];
+				a[minIndex] = temp;
+			}
 		}
 	}
 
